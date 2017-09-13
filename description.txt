@@ -1,0 +1,32 @@
+Blobs
+Game pop demo built in gameclosure framework.
+
+This is really in very early stages.
+
+The intention of this prototype is to make a of casual game that feels a bit more arcade and fast paced than the typical bubble pop game, but respecting most of it’s original mechanics.
+
+The story is about a ninja that has to fight an alien deity which is a growing mass of organs (eyes, ears, arms tentacles, etc…) before it grows too much.
+
+Once in a while, one of this elements will fall to the floor, becoming an item that the ninja can pick up and throw back to the alien mass by swiping on the screen.
+
+You will be able to move the ninja horizontally by tapping left or right of the screen, in order to avoid being crushed by falling elements, and to pick up the ones that are already on the floor.
+
+Once you have picked up a part, you will be able to throw it back to the alien mass, in the direction of your finger swipe, destroying clusters of elements of the same type.
+
+Over time/ turns, the mass will add new organs and grow. The intention is to try to make it feel like a real organic monster, rather than an hexagonal grid of spheres.
+
+Different kind of power-ups, characters and ninja moves could be added in the future to spice the game up and monetise.
+
+The current state of the demo holds the basic bubble pop features using finger swipes instead of angle aiming. Some music and sound effects has been added to add a bit of feeling and overall the game begins to feel nice and fun. Next steps would be to focus on the ninja character: movement, jump, pickup items etc, and on the blob monster behaviour so there is more to do than popping bubbles. Animation and graphical re-skinning also should be implemented during this phase.
+
+Overall, I’m happy about the experience of using game closure, if at the beginning was a bit hard to get into the flow, looks like it has potential for developing fun small games. 
+
+I tried to architecture the project in a maintainable way and split the code in modules, but probably the architecture could become better once i fully understand game closure flow. I spent approximately 12 hours on building this demo, splitter in 2 different days. Apologies for the late delivery, but i had a really busy month at my current job, so i needed to find a time window to do it. Hope you like it!
+
+Thanks,
+Carles Vallve
+
+
+
+
+

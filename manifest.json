@@ -1,0 +1,16 @@
+{
+  "appID": "aa59e1285b3349dfaa97735ac7d4a189",
+  "dependencies": {
+    "devkit-core": "https://github.com/gameclosure/devkit-core#"
+  },
+  "shortName": "blobs",
+  "studio": {
+    "domain": "studio.example.com",
+    "name": "Carles Vallve",
+    "stagingDomain": "staging.example.com"
+  },
+  "supportedOrientations": [
+    "portrait"
+  ],
+  "title": "Blobs Attack"
+}
