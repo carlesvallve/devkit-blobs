@@ -32,28 +32,39 @@ exports = Class(ui.ImageView, function (supr) {
 
   setMouseEvents = () => {
     let pos = null
-    let hasMoved = false
 
     this.on('InputStart', function (event, point) {
       pos = point
-      hasMoved = false
     })
 
     // mousemove
     this.on('InputMove', function (event, point) {
-      if (gamestate !== gamestates.ready) { return }
       if (pos === null) { return }
+      if (gamestate === gamestates.restart) {
+          return
+      }
 
       const vec = { x: point.x - pos.x, y: point.y - pos.y }
-
-      if (vec.y > -8) { return }
-
       const dist = Math.sqrt( vec.x * vec.x + vec.y * vec.y )
-      if (dist <= 13) { return }
+      if (dist <= 40) {
+        //pos = null
+        return
+      }
 
-      this.game.grid.shoot(vec)
+      // we swiped horizontaly or in a up-down diagonal,
+      // so move the player
+      if (vec.y >= -40) {
+        this.game.grid.movePlayer(vec)
+        //pos = null
+        return
+      }
 
-      hasMoved = true
+      // we swiped bottom-up,
+      // so shoot a bubble
+      if (gamestate === gamestates.ready) {
+        this.game.grid.shoot(vec)
+      }
+
       pos = null
     })
 
@@ -68,17 +79,6 @@ exports = Class(ui.ImageView, function (supr) {
         this.game.emit('game:start')
 
         return
-      }
-
-      // console.log('>>> point:', point, 'pos:', pos)
-      // const vec = { x: point.x - pos.x, y: point.y - pos.y }
-      // const dist = Math.sqrt( vec.x * vec.x + vec.y * vec.y )
-      //
-      // console.log('>>>', vec, dist)
-
-      if (!hasMoved) {
-        console.log('move the player instead of shooting!')
-        this.game.grid.movePlayer(point.x)
       }
     })
 

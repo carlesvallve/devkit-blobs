@@ -27,23 +27,13 @@ exports = Class(ui.ImageView, function (supr) {
     }
 
 
-    this.setTargetX = (x) => {
+    this.moveInDirection = (dir) => {
       if (this.moving) {
-        // TODO: optionally, we could stack next column
-        // and auto move to it once we reach the curent one?
         return
       }
 
       const columnWidth = 100
-
-      console.log('>>>', this.style.width)
-
-      this.targetX = this.style.x
-
-      const d = (x - this.style.x)
-      if (d > this.style.width / 2) { this.targetX = this.style.x + columnWidth }
-      if (d < this.style.width / 2) { this.targetX = this.style.x - columnWidth }
-
+      this.targetX = this.style.x + dir * columnWidth
       this.moving = true
     }
 

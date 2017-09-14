@@ -94,8 +94,8 @@ exports = Class(ui.ImageView, function (supr) {
       shootBubble(vec)
     }
 
-    this.movePlayer = (x) => {
-      movePlayer(x)
+    this.movePlayer = (vec) => {
+      movePlayer(vec)
     }
 
     newGame()
@@ -140,21 +140,17 @@ exports = Class(ui.ImageView, function (supr) {
 
 
   const createPlayer = (type) => {
-
-    console.log(this.style.height)
-
     this.player = this.addSubview(new Player({
-      type: type, image: playerImages[type], size: 80, //x: 0, y: 934 //  - 40
-      x: this.style.width / 2, y: this.style.height //device.height - 420 //this.style.height - 80 //device.height - 420
+      type: type, image: playerImages[type], size: 96,
+      x: this.style.width / 2, y: this.style.height
     }))
   }
 
 
   const createBubble = (type) => {
     this.bubble = this.addSubview(new Bubble({
-      type: type, image: tileImages[type], size: level.tilewidth * 0.8, //x: 0, y: 934
-      x: this.player.style.x - 25, y: this.player.style.y - 25
-      //x: device.width / 2 - 42, y: device.height - 452
+      type: type, image: tileImages[type], size: level.tilewidth * 1, // 0.8
+      x: this.player.style.x - 28, y: this.player.style.y - 25
     }))
   }
 
@@ -174,8 +170,8 @@ exports = Class(ui.ImageView, function (supr) {
   }
 
 
-  const movePlayer = (x) => {
-    this.player.setTargetX(x)
+  const movePlayer = (vec) => {
+    this.player.moveInDirection(vec.x > 0 ? 1 : -1)
   }
 
   const updatePlayer = (dt) => {
